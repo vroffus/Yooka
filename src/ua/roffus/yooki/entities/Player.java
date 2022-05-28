@@ -21,14 +21,14 @@ import static ua.roffus.yooki.utils.Handler.*;
 
 public class Player extends Entity{
     private ArrayList<ArrayList<BufferedImage>> actions;
-    private PlayingState playingState;
+    private final PlayingState playingState;
 
     //Animation moving
     private int aniTick, aniId, aniSpeed = 200;
     private int playerAction = IDLE;
     private boolean moving = false, attacking = false;
     private boolean left, right, jump;
-    private float playerSpeed = 0.2f;
+    private final float playerSpeed = 0.2f;
     private int flipX, flipW;
 
     //Collisions
@@ -37,8 +37,8 @@ public class Player extends Entity{
 
     //Gravity
     private float airSpeed = 0f;
-    private float gravity = 0.0009f * Game.SCALE;
-    private float jumpSpeed = -0.48f * Game.SCALE;
+    private final float gravity = 0.0009f * Game.SCALE;
+    private final float jumpSpeed = -0.48f * Game.SCALE;
     private float fallSpeedAfterCollision = 0.02f  *Game.SCALE;
     private boolean inAir = false;
 
@@ -54,7 +54,7 @@ public class Player extends Entity{
     private int healthBarYStart = (int) (21 * Game.SCALE);
 
     //Health
-    private int maxHealth = 100;
+    private final int maxHealth = 100;
     private int currentHealth = maxHealth;
     private int healthWidth = healthBarWidth;
 
@@ -92,16 +92,15 @@ public class Player extends Entity{
                 (int) (hitBox.x - xDrawOffset) - lvlOffsetX + flipX,
                 (int) (hitBox.y - yDrawOffset) - lvlOffsetY,
                 width * flipW, height, null);
-
         //drawHitBox(g, lvlOffsetX, lvlOffsetY);
-        //drawAttackBox(g, lvlOffsetX, lvlOffsetY);
+        drawAttackBox(g, lvlOffsetX, lvlOffsetY);
         drawUI(g);
     }
 
-/*    private void drawAttackBox(Graphics g, int lvlOffsetX, int lvlOffsetY){
+    private void drawAttackBox(Graphics g, int lvlOffsetX, int lvlOffsetY){
         g.setColor(Color.RED);
         g.drawRect((int) attackBox.x - lvlOffsetX, (int) attackBox.y - lvlOffsetY, (int) attackBox.width, (int) attackBox.height);
-    }*/
+    }
 
     private void initAttackBox(){
         attackBox = new Rectangle2D.Float(x, y, (int)(55 * Game.SCALE), (int)(55 * Game.SCALE));
@@ -195,10 +194,12 @@ public class Player extends Entity{
         if (jump)
             jump();
 
-        if(!inAir)
-            if((!left && !right) || (right && left))
+        if(!inAir) {
+            if ((!left && !right) || (right && left))
                 return;
-
+            if (!IsEntityOnFloor(hitBox, lvlData))
+                inAir = true;
+        }
         float xSpeed = 0;
 
         if (left) {
@@ -212,10 +213,6 @@ public class Player extends Entity{
             flipW = 1;
         }
 
-        if (!inAir)
-            if (!IsEntityOnFloor(hitBox, lvlData))
-                inAir = true;
-
         if (inAir) {
             if (CanMoveHere(hitBox.x, hitBox.y + airSpeed, hitBox.width, hitBox.height, lvlData)) {
                 hitBox.y += airSpeed;
@@ -227,7 +224,6 @@ public class Player extends Entity{
                 else
                     airSpeed = fallSpeedAfterCollision;
             }
-
         }
         updateXPos(xSpeed);
         moving = true;

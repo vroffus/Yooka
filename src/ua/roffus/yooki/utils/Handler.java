@@ -6,6 +6,7 @@ import java.awt.geom.Rectangle2D;
 
 public class Handler {
 
+    //Checking if the entity hitbox is hitting the texture
     public static boolean CanMoveHere(float x, float y, float width, float height, int[][] lvlData) {
         if (!IsSolid(x, y, lvlData))
             if (!IsSolid(x + width, y + height, lvlData))
@@ -14,6 +15,7 @@ public class Handler {
         return false;
     }
 
+    //Checking if there is a texture at a point
     private static boolean IsSolid(float x, float y, int[][] lvlData) {
         int maxWidth = lvlData[0].length * Game.TILES_SIZE;
         if (x < 0 || x >= maxWidth)
@@ -36,12 +38,12 @@ public class Handler {
     public static float GetEntityXPosNextToWall(Rectangle2D.Float hitBox, float xSpeed) {
         int currentTile = (int) (hitBox.x / Game.TILES_SIZE);
         if (xSpeed > 0) {
-            // Right
+            //go right
             int tileXPos = currentTile * Game.TILES_SIZE;
             int xOffset = (int) (Game.TILES_SIZE - hitBox.width);
             return tileXPos + xOffset - 1;
         } else
-            // Left
+            //go left
             return currentTile * Game.TILES_SIZE;
     }
 
@@ -57,8 +59,8 @@ public class Handler {
             return currentTile * Game.TILES_SIZE;
     }
 
+    //check pixel left and bottom right. if there are no pixels -> entity is in the air
     public static boolean IsEntityOnFloor(Rectangle2D.Float hitBox, int[][] lvlData) {
-        //check the pixel bellow left and right bottoms
         if (!IsSolid(hitBox.x, hitBox.y + hitBox.height + 1, lvlData))
             return IsSolid(hitBox.x + hitBox.width, hitBox.y + hitBox.height + 1, lvlData);
         return true;
@@ -78,6 +80,7 @@ public class Handler {
         return true;
     }
 
+    //checking if there is anything in the way of the entity to the player. if not -> go to him
     public static boolean IsSightClear(int[][] lvlData, Rectangle2D.Float enemyHitBox,
                                        Rectangle2D.Float playerHitBox, int tileY) {
         int enemyXTile = (int) (enemyHitBox.x / Game.TILES_SIZE);

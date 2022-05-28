@@ -2,7 +2,7 @@ package ua.roffus.yooki.levels;
 
 public class Level {
 
-    private int[][] lvlData;
+    private final int[][] lvlData;
 
     public Level(int[][] lvlData) {
         this.lvlData = lvlData;

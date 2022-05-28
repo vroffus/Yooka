@@ -1,5 +1,6 @@
 package ua.roffus.yooki.entities;
 
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public abstract class Entity {
@@ -14,10 +15,10 @@ public abstract class Entity {
         this.height = height;
     }
 
-    /*protected void drawHitBox(Graphics g, int xLvlOffset, int yLvlOffset){
+    protected void drawHitBox(Graphics g, int xLvlOffset, int yLvlOffset){
         g.setColor(Color.ORANGE);
         g.drawRect((int) hitBox.x - xLvlOffset, (int) hitBox.y - yLvlOffset, (int) hitBox.width, (int) hitBox.height);
-    }*/
+    }
 
     protected void initHitBox(float x, float y, int width, int height)  {
         hitBox = new Rectangle2D.Float(x, y, width, height);

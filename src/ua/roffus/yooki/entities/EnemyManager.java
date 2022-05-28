@@ -45,7 +45,7 @@ public class EnemyManager {
                         (int) (scorpio.getHitBox().x - SCORPIO_DRAWOFFSET_X) - xLvlOffset + scorpio.flipX(),
                         (int) (scorpio.getHitBox().y - SCORPIO_DRAWOFFSET_Y) - yLvlOffset,
                         SCORPIO_WIDTH * scorpio.flipW(), SCORPIO_HEIGHT, null);
-                //scorpio.drawHitBox(g, xLvlOffset, yLvlOffset);
+                scorpio.drawHitBox(g, xLvlOffset, yLvlOffset);
                 //scorpio.drawAttackBox(g, xLvlOffset, yLvlOffset);
             }
         }

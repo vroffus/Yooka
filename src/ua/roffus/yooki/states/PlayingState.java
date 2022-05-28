@@ -119,21 +119,6 @@ public class PlayingState extends State implements Stateable{
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
-
-    @Override
     public void keyPressed(KeyEvent e) {
         if (gameOver || gameWin)
             gameOverlay.keyPressed(e);
@@ -168,6 +153,16 @@ public class PlayingState extends State implements Stateable{
                     player.setJump(false);
                     break;
             }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
     }
 
     public Player getPlayer(){

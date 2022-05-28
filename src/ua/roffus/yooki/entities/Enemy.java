@@ -82,7 +82,6 @@ public abstract class Enemy extends Entity {
             newState(DEATH);
         else
             newState(HIT);
-
     }
 
     public void checkEnemyHit(Rectangle2D.Float attackBox, Player player){
@@ -98,6 +97,7 @@ public abstract class Enemy extends Entity {
             walkDir = LEFT;
     }
 
+
     protected boolean canSeePlayer(int[][] lvlData, Player player){
         int playerTileY = (int) (player.getHitBox().y / Game.TILES_SIZE);
         if(playerTileY == tileY)
@@ -107,11 +107,13 @@ public abstract class Enemy extends Entity {
         return false;
     }
 
+    //checking if the player is in range of the entity
     protected boolean isPlayerInRange(Player player){
         int absValue = (int) Math.abs(player.hitBox.x - hitBox.x) + (int) Math.abs(player.hitBox.y - hitBox.y);
         return absValue <= attackDistance * 5;
     }
 
+    //checking if the player is close enough for the entity to hit
     protected boolean isPlayerCloseForAttack(Player player){
         int absValue = (int) Math.abs(player.hitBox.x - hitBox.x) + (int) Math.abs(player.hitBox.y - hitBox.y);
         return absValue <= attackDistance;

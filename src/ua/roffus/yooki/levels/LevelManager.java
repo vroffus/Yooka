@@ -10,7 +10,7 @@ public class LevelManager {
 
     private Game game;
     private BufferedImage[] levelSprite;
-    private Level levelOne;
+    private final Level levelOne;
 
     public LevelManager(Game game) {
         this.game = game;

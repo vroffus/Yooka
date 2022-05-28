@@ -2,6 +2,7 @@ package ua.roffus.yooki.entities;
 
 import ua.roffus.yooki.Game;
 
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 import static ua.roffus.yooki.utils.Constant.Directions.LEFT;
@@ -24,10 +25,10 @@ public class Scorpio extends Enemy {
         updateAttackBox();
     }
 
-/*    public void drawAttackBox(Graphics g, int xLvlOffset, int yLvlOffset){
+    public void drawAttackBox(Graphics g, int xLvlOffset, int yLvlOffset){
         g.setColor(Color.BLACK);
         g.drawRect((int) attackBox.x - xLvlOffset, (int) attackBox.y - yLvlOffset, (int) attackBox.width, (int) attackBox.height);
-    }*/
+    }
 
     private void initAttackBox(){
         attackBox = new Rectangle2D.Float(x, y, (int) (56 * Game.SCALE), (int) (62 * Game.SCALE));
@@ -57,7 +58,6 @@ public class Scorpio extends Enemy {
                         turnTowardsPlayer(player);
                     if (isPlayerCloseForAttack(player))
                         newState(ATTACK);
-
                     move(lvlData);
                     break;
                 case ATTACK:

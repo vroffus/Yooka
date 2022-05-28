@@ -31,12 +31,11 @@ public class LoadSave {
     public static final String CLICK_MUSIC = "music/click.wav";
     public static final String JUMP_MUSIC = "music/jump.wav";
 
-
-
     public static BufferedImage GetSpriteAtlas(String fileName) {
         BufferedImage img = null;
         InputStream is = LoadSave.class.getResourceAsStream("/" + fileName);
         try {
+            assert is != null;
             img = ImageIO.read(is);
 
         } catch (IOException e) {
@@ -66,7 +65,7 @@ public class LoadSave {
         return list;
     }
 
-    //get value oed color from each pixel in LEVEL_ONE_DATA
+    //get value of red color from each pixel in LEVEL_ONE_DATA
     public static int[][] GetLevelData() {
         BufferedImage img = GetSpriteAtlas(LEVEL_ONE_DATA);
         int[][] lvlData = new int[img.getHeight()][img.getWidth()];
@@ -80,6 +79,5 @@ public class LoadSave {
                 lvlData[j][i] = value;
             }
         return lvlData;
-
     }
 }

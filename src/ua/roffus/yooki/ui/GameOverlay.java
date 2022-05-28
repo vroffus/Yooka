@@ -9,8 +9,7 @@ import java.awt.event.KeyEvent;
 
 public class GameOverlay {
 
-    private PlayingState playingState;
-    private boolean isWin;
+    private final PlayingState playingState;
 
     public GameOverlay(PlayingState playingState){
         this.playingState = playingState;
@@ -35,13 +34,5 @@ public class GameOverlay {
             playingState.resetAll();
             GameState.state = GameState.MENU_STATE;
         }
-    }
-
-    public boolean isWin() {
-        return isWin;
-    }
-
-    public void setWin(boolean win) {
-        isWin = win;
     }
 }

@@ -37,7 +37,6 @@ public class MusicManager {
                     gainControl.setValue(-20.0f);
                     break;
             }
-
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }

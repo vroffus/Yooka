@@ -10,7 +10,6 @@ public interface Stateable {
     void mouseClicked(MouseEvent e);
     void mousePressed(MouseEvent e);
     void mouseReleased(MouseEvent e);
-    void mouseMoved(MouseEvent e);
     void keyPressed(KeyEvent e);
     void keyReleased(KeyEvent e);
 }

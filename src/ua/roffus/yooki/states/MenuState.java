@@ -55,11 +55,6 @@ public class MenuState extends State implements Stateable {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
     public void mousePressed(MouseEvent e) {
         for (MenuButton menuButton : STATE_BUTTONS) {
             if (isIn(e, menuButton)) {
@@ -81,16 +76,15 @@ public class MenuState extends State implements Stateable {
         }
         resetButtons();
     }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
-
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
             GameState.state = GameState.PLAY_STATE;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
     }
 
     @Override

@@ -6,7 +6,7 @@ import ua.roffus.yooki.utils.LoadSave;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static ua.roffus.yooki.utils.Constant.UI.StateButtons.*;
+import static ua.roffus.yooki.utils.Constant.StateButtons.*;
 
 public class MenuButton extends Button {
 
