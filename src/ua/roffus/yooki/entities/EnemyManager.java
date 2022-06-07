@@ -41,11 +41,11 @@ public class EnemyManager {
     public void drawScorpio(Graphics g, int xLvlOffset, int yLvlOffset){
         for(Scorpio scorpio : scorpions) {
             if (scorpio.isActive()) {
-                g.drawImage(scorpioArr[scorpio.getEnemyState()][scorpio.getAniIndex()],
+                g.drawImage(scorpioArr[scorpio.getState()][scorpio.getAniId()],
                         (int) (scorpio.getHitBox().x - SCORPIO_DRAWOFFSET_X) - xLvlOffset + scorpio.flipX(),
                         (int) (scorpio.getHitBox().y - SCORPIO_DRAWOFFSET_Y) - yLvlOffset,
                         SCORPIO_WIDTH * scorpio.flipW(), SCORPIO_HEIGHT, null);
-                scorpio.drawHitBox(g, xLvlOffset, yLvlOffset);
+                //scorpio.drawHitBox(g, xLvlOffset, yLvlOffset);
                 //scorpio.drawAttackBox(g, xLvlOffset, yLvlOffset);
             }
         }

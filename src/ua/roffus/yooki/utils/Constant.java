@@ -4,9 +4,23 @@ import ua.roffus.yooki.Game;
 
 public class Constant {
 
+    public static final float GRAVITY = 0.0009f * Game.SCALE;
+    public static final int ANI_SPEED = 220;
+
     public static class Directions {
         public static final int LEFT = 0;
         public static final int RIGHT = 1;
+    }
+
+    public static class StatusBar {
+        public static final int STATUS_BAR_WIDTH = (int) (288 * Game.SCALE);
+        public static final int STATUS_BAR_HEIGHT = (int) (87 * Game.SCALE);
+        public static final int STATUS_BAR_X = (int) (15 * Game.SCALE);
+        public static final int STATUS_BAR_Y = (int) (15 * Game.SCALE);
+        public static final int HEALTH_BAR_WIDTH = (int) (225 * Game.SCALE);
+        public static final int HEALTH_BAR_HEIGHT = (int) (6 * Game.SCALE);
+        public static final int HEALTH_BAR_X_START = (int) (51 * Game.SCALE);
+        public static final int HEALTH_BAR_Y_START = (int) (21 * Game.SCALE);
     }
 
     public static class StateButtons {

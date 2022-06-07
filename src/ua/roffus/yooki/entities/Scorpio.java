@@ -11,11 +11,9 @@ import static ua.roffus.yooki.utils.Constant.EnemyConstants.*;
 
 public class Scorpio extends Enemy {
 
-    private Rectangle2D.Float attackBox;
-
     public Scorpio(float x, float y) {
         super(x, y, SCORPIO_WIDTH, SCORPIO_HEIGHT, SCORPIO);
-        initHitBox(x, y, (int) (66 * Game.SCALE), (int) (32 * Game.SCALE));
+        initHitBox(66, 32);
         initAttackBox();
     }
 
@@ -23,11 +21,6 @@ public class Scorpio extends Enemy {
         updateBehaviour(lvlData, player);
         updateAnimationTick();
         updateAttackBox();
-    }
-
-    public void drawAttackBox(Graphics g, int xLvlOffset, int yLvlOffset){
-        g.setColor(Color.BLACK);
-        g.drawRect((int) attackBox.x - xLvlOffset, (int) attackBox.y - yLvlOffset, (int) attackBox.width, (int) attackBox.height);
     }
 
     private void initAttackBox(){
@@ -49,7 +42,7 @@ public class Scorpio extends Enemy {
         if (inAir) {
             updateInAir(lvlData);
         } else {
-            switch (enemyState) {
+            switch (state) {
                 case IDLE:
                     newState(RUNNING);
                     break;
@@ -61,9 +54,9 @@ public class Scorpio extends Enemy {
                     move(lvlData);
                     break;
                 case ATTACK:
-                    if (aniIndex == 0)
+                    if (aniId == 0)
                         attackChecked = false;
-                    if (aniIndex == 2 && !attackChecked)
+                    if (aniId == 2 && !attackChecked)
                         checkEnemyHit(attackBox, player);
                     break;
                 case HIT:
